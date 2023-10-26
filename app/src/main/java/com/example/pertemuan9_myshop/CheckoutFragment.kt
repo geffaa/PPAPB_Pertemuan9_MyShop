@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.pertemuan9_myshop.databinding.ActivityMainBinding
-import com.example.pertemuan9_myshop.databinding.FragmentHomeBinding
-import java.util.zip.Inflater
+import androidx.navigation.fragment.navArgs
+import com.example.pertemuan9_myshop.databinding.FragmentCheckoutBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,26 +16,29 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
+ * Use the [CheckoutFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class CheckoutFragment : Fragment() {
+    private lateinit var binding: FragmentCheckoutBinding
 
-    private lateinit var binding: FragmentHomeBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentCheckoutBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
-            val action = HomeFragmentDirections.actionHomeFragmentToCheckoutFragment(productText.text.toString());
-            btnBuy.setOnClickListener {
-                findNavController().navigate(action)
+            val args : CheckoutFragmentArgs by navArgs()
+            txtProductName.setText(args.productName)
+
+            btnDone.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
     }
