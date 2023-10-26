@@ -46,6 +46,14 @@ class CheckoutFragment : Fragment() {
                 findNavController().navigate(action)
             }
 
+            findNavController().currentBackStackEntry?.savedStateHandle?.let {
+                handle ->
+                handle.getLiveData<String>("address").observe(viewLifecycleOwner) {
+                    res ->
+                    edtAddress.setText(res)
+                }
+            }
+
         }
     }
 }
