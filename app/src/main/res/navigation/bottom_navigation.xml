@@ -33,5 +33,13 @@
             android:name="productName"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_checkoutFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.pertemuan9_myshop.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" />
 </navigation>

@@ -40,6 +40,12 @@ class CheckoutFragment : Fragment() {
             btnDone.setOnClickListener {
                 findNavController().navigateUp()
             }
+
+            edtAddress.setOnClickListener{
+                val action = CheckoutFragmentDirections.actionCheckoutFragmentToAddressFragment()
+                findNavController().navigate(action)
+            }
+
         }
     }
 }
